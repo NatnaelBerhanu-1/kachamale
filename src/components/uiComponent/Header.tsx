@@ -3,7 +3,7 @@ import UserAvatar from "./UserAvatar";
 
 function Header() {
   return (
-    <div className="h-[100px] bg-main_blue grid grid-cols-2 items-center px-16">
+    <div className="h-[72px] bg-main_blue grid grid-cols-2 items-center px-16">
       <div className="flex gap-4">
         <Image
           src={"/assets/logo.png"}

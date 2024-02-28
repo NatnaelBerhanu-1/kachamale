@@ -48,7 +48,9 @@ export default function Home() {
             ))}
           </div>
           {/*card list finish */}
-          <Button className="bg-main_blue mx-auto mt-5 hover:bg-hover_blue">Show More</Button>
+          <Button className="bg-main_blue mx-auto my-10 hover:bg-hover_blue">
+            Show More
+          </Button>
         </div>
       </div>
     </main>
