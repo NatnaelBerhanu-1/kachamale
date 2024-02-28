@@ -27,7 +27,7 @@ function Header() {
             className="absolute left-2 top-0 bottom-0 my-auto h-[20px] w-[20px]"
           />
           <Image
-            src={"/assets/searchLogo.png"}
+            src={"/assets/filterLogo.png"}
             alt="filter logo"
             width={100}
             height={100}
