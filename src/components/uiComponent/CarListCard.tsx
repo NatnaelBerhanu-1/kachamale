@@ -5,6 +5,7 @@ import Rating from "./Rating";
 import { Button } from "../ui/button";
 import { CarListType } from "@/lib/interfaces";
 import Link from "next/link";
+import DealType from "./DealType";
 
 interface PropsType {
   data: CarListType;
@@ -13,7 +14,10 @@ interface PropsType {
 function CarListCard(props: PropsType) {
   const { data } = props;
   return (
-    <Link href={`/${data.id}`} className="max-w-[330px] shadow-sm w-full mx-auto min-h-[360px] h-full bg-white rounded-lg p-2 flex flex-col justify-between">
+    <Link
+      href={`/${data.id}`}
+      className="max-w-[330px] shadow-sm w-full mx-auto min-h-[360px] h-full bg-white rounded-lg p-2 flex flex-col justify-between"
+    >
       <div className="flex justify-between p-2 items-center">
         <span>
           <h1 className="text-lg font-bold uppercase">{data.abbreviateName}</h1>
@@ -21,31 +25,7 @@ function CarListCard(props: PropsType) {
             {data.type}
           </p>
         </span>
-        <span
-          className={`rounded-full px-3 h-fit font-bold text-xs ${
-            data?.dealType.toLowerCase() == "great"
-              ? "bg-great_deal_bg text-great_deal_text"
-              : data?.dealType.toLowerCase() == "good"
-              ? "bg-good_deal_bg text-good_deal_text"
-              : data?.dealType.toLowerCase() == "fair"
-              ? "bg-fair_deal_bg text-fair_deal_text"
-              : ""
-          }`}
-        >
-          {data?.dealType.toLowerCase() == "great" ? (
-            <span className="flex items-center gap-1 capitalize">
-              <ArrowUp className="w-4" /> Great Deal
-            </span>
-          ) : data?.dealType.toLowerCase() == "good" ? (
-            <span className="flex items-center gap-1 capitalize">
-              <ArrowUpRight className="w-4" /> Good Deal
-            </span>
-          ) : (
-            <span className="flex items-center gap-1 capitalize">
-              <ArrowRight className="w-4" /> Fair Deal
-            </span>
-          )}
-        </span>
+        <DealType dealType={data.dealType} />
       </div>
       <div className="relative max-h-[130px]">
         <Image
@@ -95,7 +75,7 @@ function CarListCard(props: PropsType) {
           </p>
         </span>
       </div>
-      <div>
+      <div className="">
         <Rating reviewValue={data.reviews.length} ratingValue={data.rating} />
       </div>
       <div className="flex justify-between items-center">

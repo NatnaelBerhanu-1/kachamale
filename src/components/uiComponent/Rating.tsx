@@ -4,14 +4,18 @@ import React from "react";
 function Rating({
   ratingValue,
   reviewValue,
+  hideRatingNumber,
+  hideReview,
 }: {
   ratingValue: number;
   reviewValue: number;
+  hideRatingNumber?: boolean;
+  hideReview?: boolean;
 }) {
   const GiveRating = () => {
     return (
-      <div className="flex items-center">
-        <span>
+      <div className="flex items-center gap-[2px]">
+        <span className="scale-110">
           {ratingValue >= 1 ? (
             <Image
               src={"/assets/fullStar.png"}
@@ -39,7 +43,7 @@ function Rating({
             />
           )}
         </span>
-        <span>
+        <span className="scale-110">
           {ratingValue >= 2 ? (
             <Image
               src={"/assets/fullStar.png"}
@@ -66,7 +70,7 @@ function Rating({
             />
           )}
         </span>
-        <span>
+        <span className="scale-110">
           {ratingValue >= 3 ? (
             <Image
               src={"/assets/fullStar.png"}
@@ -93,7 +97,7 @@ function Rating({
             />
           )}
         </span>
-        <span>
+        <span className="scale-110">
           {ratingValue >= 4 ? (
             <Image
               src={"/assets/fullStar.png"}
@@ -120,7 +124,7 @@ function Rating({
             />
           )}
         </span>
-        <span>
+        <span className="scale-110">
           {ratingValue >= 5 ? (
             <Image
               src={"/assets/fullStar.png"}
@@ -151,10 +155,14 @@ function Rating({
     );
   };
   return (
-    <div className="flex gap-1 font-semibold">
-      {ratingValue}
+    <div className="flex gap-[5px] items-center text-sm font-semibold">
+      {!hideRatingNumber && ratingValue}
       <GiveRating />
-      {reviewValue + " reviews "}
+      {!hideReview && (
+        <p className="tracking-tight font-medium">
+          ({reviewValue} {reviewValue > 200 ? "+reviews" : " reviews "})
+        </p>
+      )}
     </div>
   );
 }

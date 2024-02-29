@@ -2,7 +2,17 @@ export const fakeCarsList = [
   {
     id: 1,
     thumbnail: "/assets/Car2.png",
-    images: ["/assets/carWheel.png", "/assets/carChair.png"],
+    images: [
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+    ],
     name: "Nissan GT - R",
     abbreviateName: "XR (S)",
     dealType: "Great",
@@ -23,11 +33,11 @@ export const fakeCarsList = [
         rating: 3.5,
         date: "21 july 2022",
         review:
-          " Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+          "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
       },
       {
         avatar:
-          "https://learnyzen.com/wp-content/uploads/2017/08/test1-481x385.png",
+          "",
         name: "Yohannes Ademe",
         position: "CEO at Lorem",
         rating: 4,
@@ -39,16 +49,31 @@ export const fakeCarsList = [
     rating: 3.6,
     promoTitle: "Best Sport Car Nissan GT - R",
     promoDesc: "Providing cheap  service and safe and comfortable facility.",
+    owner: {
+      avatar: "",
+      lastSeenAt: "2024-02-09T15:03:58.306+00:00",
+      fullName: "Leul assefa",
+    },
   },
   {
     id: 2,
     thumbnail: "/assets/Car.png",
-    images: ["/assets/carWheel.png", "/assets/carChair.png"],
+    images: [
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+    ],
     name: "Toyota Camry",
     abbreviateName: "LE",
     dealType: "Fair",
     description:
-      " Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+      "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
     type: "Sedan",
     capacity: 5,
     steering: "Auto",
@@ -68,7 +93,7 @@ export const fakeCarsList = [
       },
       {
         avatar:
-          "https://learnyzen.com/wp-content/uploads/2017/08/test1-481x385.png",
+          "",
         name: "Yohannes Ademe",
         position: "CEO at Lorem",
         rating: 4,
@@ -80,16 +105,32 @@ export const fakeCarsList = [
     rating: 4.0,
     promoTitle: "Reliable and Practical",
     promoDesc: "Perfect for daily commuting.",
+    owner: {
+      avatar:
+        "https://learnyzen.com/wp-content/uploads/2017/08/test1-481x385.png",
+      lastSeenAt: "2024-02-09T15:03:58.306+00:00",
+      fullName: "Leul assefa",
+    },
   },
   {
     id: 3,
     thumbnail: "/assets/Car2.png",
-    images: ["/assets/carWheel.png", "/assets/carChair.png"],
+    images: [
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+    ],
     name: "Jetour X70 ",
     abbreviateName: "xR (s)",
     dealType: "good",
     description:
-      " Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+      "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
     type: "suv",
     capacity: 6,
     steering: "manual",
@@ -121,16 +162,32 @@ export const fakeCarsList = [
     rating: 3.2,
     promoTitle: "Best SUV Car Jetour XR (S)",
     promoDesc: "Providing cheap service and safe and comfortable facility.",
+    owner: {
+      avatar:
+        "https://learnyzen.com/wp-content/uploads/2017/08/test1-481x385.png",
+      lastSeenAt: "2024-02-09T15:03:58.306+00:00",
+      fullName: "Leul assefa",
+    },
   },
   {
     id: 4,
     thumbnail: "/assets/Car.png",
-    images: ["/assets/carWheel.png", "/assets/carChair.png"],
+    images: [
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+      "/assets/carWheel.png",
+      "/assets/carChair.png",
+      "/assets/carWheel.png",
+    ],
     name: "Ford Mustang",
     abbreviateName: "GT",
     dealType: "good",
     description:
-      "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+      "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
     type: "Sport",
     capacity: 4,
     steering: "Manual",
@@ -140,7 +197,7 @@ export const fakeCarsList = [
     reviews: [
       {
         avatar:
-          "https://learnyzen.com/wp-content/uploads/2017/08/test1-481x385.png",
+          "",
         name: "Darik Adem",
         position: "CEO at Safaricom",
         rating: 3.5,
@@ -162,5 +219,11 @@ export const fakeCarsList = [
     rating: 3.6,
     promoTitle: "Unleash Your Inner Speedster",
     promoDesc: "Providing cheap service and safe and comfortable facility.",
+    owner: {
+      avatar:
+        "https://learnyzen.com/wp-content/uploads/2017/08/test1-481x385.png",
+      lastSeenAt: "2024-02-09T15:03:58.306+00:00",
+      fullName: "John doe",
+    },
   },
 ];

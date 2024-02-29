@@ -12,13 +12,19 @@ export interface CarListType {
   gasoline: number;
   price: number;
   oldPrice: number;
-  reviews: Review[];
+  reviews: ReviewType[];
   rating: number;
   promoTitle: string;
   promoDesc: string;
+  owner: {
+    fullName: string;
+    lastSeenAt: string;
+    avatar:string;
+
+  }
 }
 
-export interface Review {
+export interface ReviewType {
   avatar: string;
   name: string;
   position: string;
