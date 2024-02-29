@@ -10,6 +10,7 @@ import Image from "next/image";
 import AvatarPage from "@/components/uiComponent/Avatar";
 import { formatDistanceToNow } from "date-fns";
 import NotFoundComp from "@/components/uiComponent/NotFoundComp";
+import CarListCard from "@/components/uiComponent/CarListCard";
 
 export default function page({ params }: { params: { carId: string } }) {
   const { carId } = params;
@@ -18,7 +19,7 @@ export default function page({ params }: { params: { carId: string } }) {
   ) as CarListType;
 
   return (
-    <div className="flex flex-col gap-10 p-5 border border-green-500 justify-center items-center">
+    <div className="flex flex-col gap-10 p-5 justify-center items-center">
       {data ? (
         <>
           {/*cars detail top part start*/}
@@ -199,7 +200,17 @@ export default function page({ params }: { params: { carId: string } }) {
             {/*cars detail top right(owner) part finish*/}
           </div>
           {/* similar car start*/}
-          <div className="border border-red-500 p-2 w-full">test</div>
+          <div className="w-full flex flex-col gap-5">
+            <h1 className="text-main_blue font-semibold pl-5">Similar cars</h1>
+            <div className="grid grid-cols-4 gap-4">
+              {fakeCarsList.map((data, idx: number) => (
+                <CarListCard data={data} key={idx} />
+              ))}
+              {fakeCarsList.map((data, idx: number) => (
+                <CarListCard data={data} key={idx} />
+              ))}
+            </div>
+          </div>
           {/* similar car start*/}
         </>
       ) : (

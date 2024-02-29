@@ -33,7 +33,7 @@ function CarListCard(props: PropsType) {
           alt="car"
           width={500}
           height={1000}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-95"
         />
         <div className="absolute bottom-0 w-full h-10 bg-gradient-to-t from-white to-transparent"></div>
       </div>
