@@ -1,5 +1,6 @@
 import Image from "next/image";
 import UserAvatar from "./UserAvatar";
+import Link from "next/link";
 
 function Header() {
   return (
@@ -13,7 +14,7 @@ function Header() {
           height={200}
           className="max-w-[154px] max-h-[44px] object-contain"
         />
-        <div className="flex-1 relative">
+        <div className="flex-1 h-10 relative">
           <input
             type="text"
             placeholder="search something here"
@@ -24,15 +25,20 @@ function Header() {
             alt="search logo"
             width={100}
             height={100}
-            className="absolute left-2 top-0 bottom-0 my-auto h-[20px] w-[20px]"
+            className="absolute top-0 bottom-0 my-auto left-3 h-[20px] w-[20px]"
           />
-          <Image
-            src={"/assets/filterLogo.png"}
-            alt="filter logo"
-            width={100}
-            height={100}
-            className="absolute right-5 top-0 bottom-0 my-auto h-[20px] w-[20px]"
-          />
+          <Link
+            href={"/search"}
+            className="absolute h-[20px] w-[20px] right-5 top-0 bottom-0 my-auto "
+          >
+            <Image
+              src={"/assets/filterLogo.png"}
+              alt="filter logo"
+              width={100}
+              height={100}
+              className="h-[20px] w-[20px]"
+            />
+          </Link>
         </div>
       </div>
       <div className="relative flex justify-end gap-4">
