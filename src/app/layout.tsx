@@ -5,6 +5,8 @@ import Header from "@/components/uiComponent/Header";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/uiComponent/Footer";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -37,6 +39,7 @@ export default function RootLayout({
         <footer>
           <Footer />
         </footer>
+        <ToastContainer />
       </body>
     </html>
   );
