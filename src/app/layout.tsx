@@ -14,7 +14,7 @@ export const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Welcome to EtCarWoW",
 };
 
 export default function RootLayout({

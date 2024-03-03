@@ -11,13 +11,28 @@ import AvatarPage from "@/components/uiComponent/Avatar";
 import { formatDistanceToNow } from "date-fns";
 import NotFoundComp from "@/components/uiComponent/NotFoundComp";
 import CarListCard from "@/components/uiComponent/CarListCard";
+import { Metadata } from "next";
+
+const getSingleCar = (carId: string | number) => {
+  return fakeCarsList.find((c: CarListType) => c.id == carId) as CarListType;
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { carId: string | number };
+}): Promise<Metadata> {
+  const carId = params.carId;
+  const data = getSingleCar(carId);
+
+  return {
+    title: data.name,
+  };
+}
 
 export default function page({ params }: { params: { carId: string } }) {
   const { carId } = params;
-  const data = fakeCarsList.find(
-    (c: CarListType) => c.id == carId
-  ) as CarListType;
-
+  const data = getSingleCar(carId);
   return (
     <div className="flex flex-col gap-10 p-5 justify-center max-w-[1400px] mx-auto items-center">
       {data ? (

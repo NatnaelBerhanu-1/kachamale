@@ -1,5 +1,9 @@
 import CarCreateForm from "@/components/uiComponent/CarCreateForm";
-import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "New Car",
+};
 
 function page() {
   return (

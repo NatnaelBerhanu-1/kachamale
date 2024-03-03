@@ -2,6 +2,11 @@ import { Button } from "@/components/ui/button";
 import CarListCard from "@/components/uiComponent/CarListCard";
 import CarouselCard from "@/components/uiComponent/CarouselCard";
 import { fakeCarsList } from "@/lib/fakeCarsList";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "EtCarWoW | Home",
+};
 
 export default function Home() {
   return (
