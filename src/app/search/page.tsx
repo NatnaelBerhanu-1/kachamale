@@ -1,6 +1,7 @@
 import BodyTypeFilterFormComp from "@/components/uiComponent/BodyTypeFilterFormComp";
 import CapacityFilterFormComp from "@/components/uiComponent/CapacityFilterFormComp";
 import CarListCard from "@/components/uiComponent/CarListCard";
+import FilterListTop from "@/components/uiComponent/FilterListTop";
 import SliderFilterComp from "@/components/uiComponent/SliderFilterComp";
 import TypeFilterFormComp from "@/components/uiComponent/TypeFilterFormComp";
 import { fakeCarsList } from "@/lib/fakeCarsList";
@@ -42,6 +43,9 @@ function page() {
       </div>
 
       <div className="col-span-8 grid gap-5 m-10 mb-0">
+        <Suspense fallback={<h1>loading...</h1>}>
+          <FilterListTop />
+        </Suspense>
         <div className="grid grid-cols-4 gap-4">
           {fakeCarsList.map((data, idx: number) => (
             <CarListCard data={data} key={idx} />

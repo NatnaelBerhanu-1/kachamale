@@ -19,7 +19,7 @@ export default function page({ params }: { params: { carId: string } }) {
   ) as CarListType;
 
   return (
-    <div className="flex flex-col gap-10 p-5 justify-center items-center">
+    <div className="flex flex-col gap-10 p-5 justify-center max-w-[1400px] mx-auto items-center">
       {data ? (
         <>
           {/*cars detail top part start*/}

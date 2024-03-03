@@ -15,7 +15,7 @@ function CarListCard(props: PropsType) {
   const { data } = props;
   return (
     <Link
-      href={`/${data.id}`}
+      href={`/si/${data.id}`}
       className="max-w-[330px] shadow-sm w-full mx-auto min-h-[360px] h-full bg-white rounded-lg p-2 flex flex-col justify-between"
     >
       <div className="flex justify-between p-2 items-center">
