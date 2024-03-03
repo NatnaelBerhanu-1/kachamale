@@ -1,6 +1,6 @@
 import { fakeCarsList } from "@/lib/fakeCarsList";
 import React from "react";
-import { CarListType, ReviewType } from "../../lib/interfaces";
+import { CarListType, ReviewType } from "../../../lib/interfaces";
 import Spinner from "@/components/uiComponent/Spinner";
 import Rating from "@/components/uiComponent/Rating";
 import DealType from "@/components/uiComponent/DealType";
