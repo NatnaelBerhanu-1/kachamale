@@ -1,6 +1,9 @@
 import Image from "next/image";
 import UserAvatar from "./UserAvatar";
 import Link from "next/link";
+import Search from "./Search";
+import { Suspense } from "react";
+import Spinner from "./Spinner";
 
 function Header() {
   return (
@@ -15,11 +18,9 @@ function Header() {
           className="max-w-[154px] max-h-[44px] object-contain"
         />
         <div className="flex-1 h-10 relative">
-          <input
-            type="text"
-            placeholder="search something here"
-            className="rounded-full w-full h-10 pl-10 outline-none"
-          />
+          <Suspense fallback={<Spinner />}>
+            <Search />
+          </Suspense>
           <Image
             src={"/assets/searchLogo.png"}
             alt="search logo"
