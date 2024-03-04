@@ -42,7 +42,7 @@ export const dashboardSidebarPrefData = [
     id: 1,
     src: "/dashboard/settingIcon.png",
     label: "setting",
-    link: "/ad/setting",
+    link: "/ad/dashboard/setting",
   },
   {
     id: 2,
