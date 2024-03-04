@@ -9,14 +9,19 @@ function Header() {
   return (
     <div className="h-[72px] bg-main_blue grid grid-cols-2 items-center px-16">
       <div className="flex gap-4">
-        <Image
-          src={"/assets/logo.png"}
-          alt="logo"
-          width={200}
-          quality={100}
-          height={200}
-          className="max-w-[154px] max-h-[44px] object-contain"
-        />
+        <Link
+          href={"/"}
+          className="flex items-center justify-center"
+        >
+          <Image
+            src={"/assets/logo.png"}
+            alt="logo"
+            width={200}
+            quality={100}
+            height={200}
+            className="max-w-[154px] max-h-[44px] object-contain"
+          />
+        </Link>
         <div className="flex-1 h-10 relative">
           <Suspense fallback={<Spinner />}>
             <Search />

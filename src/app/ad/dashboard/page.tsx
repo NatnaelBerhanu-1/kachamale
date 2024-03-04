@@ -1,9 +1,11 @@
-import React from 'react'
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Admin | Dashboard",
+};
 
 function page() {
-  return (
-    <div>page</div>
-  )
+  return <h1>dashboard</h1>;
 }
 
-export default page
+export default page;
