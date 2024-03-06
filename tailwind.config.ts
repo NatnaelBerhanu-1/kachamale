@@ -10,6 +10,8 @@ const config = {
   ],
   prefix: "",
   theme: {
+    transparent: "transparent",
+    current: "currentColor",
     container: {
       center: true,
       padding: "2rem",
@@ -68,6 +70,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -90,7 +93,9 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
 } satisfies Config;
 
 export default config;
