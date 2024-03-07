@@ -2,12 +2,12 @@
 import { Chart } from "react-google-charts";
 
 export const data = [
-  ["Task", "Hours per Day"],
-  ["Work", 11],
-  ["Eat", 2],
-  ["Commute", 2],
-  ["Watch TV", 2],
-  ["Sleep", 7], // CSS-style declaration
+  ["Name", "Sale"],
+  ["Sport Car", 17439],
+  ["SUV", 9417],
+  ["Coupe", 18197],
+  ["Hatchback", 12510],
+  ["MVP", 14406], // CSS-style declaration
 ];
 
 export const options = {

@@ -4,8 +4,8 @@ import { Chart } from "react-google-charts";
 
 const data = [
   [
-    "Element",
-    "Density",
+    "Year",
+    "Sale",
     { role: "style" },
     {
       sourceColumn: 0,
@@ -14,28 +14,27 @@ const data = [
       calc: "stringify",
     },
   ],
-  ["Silver", 10.49, "#00A8E1", null],
-  ["Gold", 19.3, "#00A8E1", null],
-  ["Platinum", 21.45, "color: #00A8E1", null],
+  ["2000", 1000, "#00A8E1", "20M"],
+  ["2021", 2000, "#00A8E1", "30M"],
+  ["2022", 3000, "color: #00A8E1", "60M"],
 ];
 
 const options = {
-  title: "Density of Precious Metals, in g/cm^3",
-  width: 600,
-  height: 400,
-  bar: { groupWidth: "95%" },
-  legend: { position: "none" },
+  bar: { groupWidth: "55%" },
+  legend: { position: "bottom" },
 };
 
 function BarChart() {
   return (
-    <Chart
-      chartType="BarChart"
-      width="100%"
-      height="400px"
-      data={data}
-      options={options}
-    />
+    <div className="flex relative">
+      <Chart
+        chartType="BarChart"
+        width="100%"
+        height="400px"
+        data={data}
+        options={options}
+      />
+    </div>
   );
 }
 

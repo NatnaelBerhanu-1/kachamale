@@ -44,7 +44,7 @@ function page() {
       <div className="rounded-lg p-5 dark:bg-transparent bg-white shadow-sm h-fit">
         <Map />
       </div>
-      <div className="rounded-lg p-5 dark:bg-transparent bg-white shadow-sm h-fit flex flex-col gap-2">
+      <div className="rounded-lg p-5 dark:bg-transparent bg-white shadow-sm h-fit flex flex-col gap-2 w-full">
         <div className="w-full flex justify-between items-center">
           <b className="text-lg">Recent Car Sales</b>
           <TopSalesDropDown />

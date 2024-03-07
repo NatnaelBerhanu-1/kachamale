@@ -3,15 +3,14 @@ import React from "react";
 import { Chart } from "react-google-charts";
 
 export const data = [
-  ["Country", "Popularity"],
-  ["Germany", 200],
-  ["United States", 300],
-  ["Brazil", 400],
-  ["Canada", 500],
-  ["France", 600],
-  ["RU", 700],
+  ["Country", "sale"],
+  ["Germany", 5000],
+  ["United States", 90000],
+  ["Brazil", 45000],
+  ["Canada", 2000],
+  ["Ethiopia", 60000],
+  ["RU", 73500],
 ];
-
 
 function Map() {
   return (
