@@ -1,6 +1,6 @@
 import { fakeCarsList } from "@/lib/fakeCarsList";
 import React from "react";
-import { CarListType, ReviewType } from "../../../lib/interfaces";
+
 import Spinner from "@/components/uiComponent/Spinner";
 import Rating from "@/components/uiComponent/Rating";
 import DealType from "@/components/uiComponent/DealType";
@@ -12,6 +12,7 @@ import { formatDistanceToNow } from "date-fns";
 import NotFoundComp from "@/components/uiComponent/NotFoundComp";
 import CarListCard from "@/components/uiComponent/CarListCard";
 import { Metadata } from "next";
+import { CarListType, ReviewType } from "@/lib/interfaces";
 
 const getSingleCar = (carId: string | number) => {
   return fakeCarsList.find((c: CarListType) => c.id == carId) as CarListType;

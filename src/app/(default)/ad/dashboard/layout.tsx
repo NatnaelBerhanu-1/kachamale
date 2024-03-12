@@ -1,12 +1,9 @@
-import React from "react";
+import DashboardSideMenuListBox from "@/components/uiComponent/DashboardSideMenuListBox";
+import { Separator } from "@/components/ui/separator";
 import {
   dashboardSidebarMainMenuData,
   dashboardSidebarPrefData,
-} from "../../../lib/dashboardSidebarData";
-import DashboardSideMenuListBox from "@/components/uiComponent/DashboardSideMenuListBox";
-import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
-import { ModeToggle } from "@/components/uiComponent/ModeToggle";
+} from "@/lib/dashboardSidebarData";
 
 function layout({ children }: { children: React.ReactNode }) {
   return (
@@ -40,20 +37,6 @@ function layout({ children }: { children: React.ReactNode }) {
               key={data.id}
             />
           ))}
-        </div>
-
-        <div className="flex text-center justify-between py-2 px-3 text-gray_text">
-          <div className="flex gap-3 items-center">
-            <Image
-              src={"/dashboard/visionModeIcon.png"}
-              width={50}
-              height={50}
-              className="w-6 h-6"
-              alt="dark mode"
-            />
-            <p className="text-lg font-semibold capitalize">Dark Mode</p>
-          </div>
-          <ModeToggle />
         </div>
       </div>
       <div className="col-span-3">{children}</div>
