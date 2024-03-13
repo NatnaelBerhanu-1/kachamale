@@ -4,9 +4,11 @@ import React from "react";
 function FormHeader({
   title,
   description,
+  hide,
 }: {
   title: string;
   description: string;
+  hide?: boolean;
 }) {
   return (
     <div className="flex flex-col justify-center items-center gap-5">
@@ -17,10 +19,12 @@ function FormHeader({
         height={100}
         className="w-full object-contain h-8 max-w-[200px]"
       />
-      <div className="text-center flex flex-col gap-3">
-        <h1 className="text-3xl font-medium">{title}</h1>
-        <p className="text-gray_text text-base">{description}</p>
-      </div>
+      {!hide && (
+        <div className="text-center flex flex-col gap-3">
+          <h1 className="text-3xl font-medium">{title}</h1>
+          <p className="text-gray_text text-base">{description}</p>
+        </div>
+      )}
     </div>
   );
 }
