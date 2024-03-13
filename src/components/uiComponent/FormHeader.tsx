@@ -19,7 +19,7 @@ function FormHeader({
       />
       <div className="text-center flex flex-col gap-3">
         <h1 className="text-3xl font-medium">{title}</h1>
-        <p className="text-gray_text tracking-wider text-base">{description}</p>
+        <p className="text-gray_text text-base">{description}</p>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ function SigninForm() {
         height={1000}
         className="absolute bottom-4 left-4 max-w-[300px] z-0"
       />
-      <div className="max-w-[400px] border shadow-md mx-auto p-10 rounded-lg z-10">
+      <div className="max-w-[400px] w-full shadow-md mx-auto p-10 rounded-lg z-10">
         <FormHeader
           title="Log in to your account"
           description="Welcome back! Please enter your details."
@@ -44,7 +44,7 @@ function SigninForm() {
             />
           </div>
 
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-600"
@@ -59,7 +59,7 @@ function SigninForm() {
               placeholder="Enter your password"
               className="mt-1 rounded-lg border-gray-200 bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-4 w-full outline-none"
             />
-          </div>
+          </div> */}
 
           <div className="col-span-6">
             <label htmlFor="rememberMe" className="flex gap-2 items-center">
@@ -97,7 +97,7 @@ function SigninForm() {
               href={"/register"}
               className="font-semibold text-main_blue hover:underline"
             >
-              Sign Up
+              Sign up
             </Link>
           </span>
         </form>
