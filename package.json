@@ -29,7 +29,6 @@
     "react-google-charts": "^4.0.1",
     "react-loader-spinner": "^6.1.6",
     "react-toastify": "^10.0.4",
-    "recharts": "^2.12.2",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
