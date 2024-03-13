@@ -10,12 +10,10 @@ interface PropsType {
   data: CarListType;
 }
 
-function CarListCard(props: PropsType) {
+function ProfilePostedCarCard(props: PropsType) {
   const { data } = props;
   return (
-    <div
-      className="max-w-[330px] shadow-sm w-full mx-auto min-h-[360px] h-full bg-white rounded-lg p-2 flex flex-col justify-between"
-    >
+    <div className="max-w-[330px] shadow-sm w-full mx-auto min-h-[360px] h-full bg-white rounded-lg p-2 flex flex-col justify-between">
       <div className="flex justify-between p-2 items-center">
         <span>
           <h1 className="text-lg font-bold uppercase">{data.abbreviateName}</h1>
@@ -76,14 +74,26 @@ function CarListCard(props: PropsType) {
       <div className="">
         <Rating reviewValue={data.reviews.length} ratingValue={data.rating} />
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center gap-10">
         <span className="font-bold text-lg tracking-wide">
           ${data.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
         </span>
-        <Button className="bg-main_blue hover:bg-hover_blue">Buy Now</Button>
+        {data.status === "onSale" ? (
+          <Button className="bg-main_blue hover:bg-hover_blue flex-1">
+            Mark as Sale
+          </Button>
+        ) : data.status === "pending" ? (
+          <Button disabled>Pending Approval</Button>
+        ) : data.status === "sold" ? (
+          <Button className="bg-green-500 hover:bg-green-600 flex-1">
+            Sold
+          </Button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
 }
 
-export default CarListCard;
+export default ProfilePostedCarCard;

@@ -21,7 +21,7 @@ export default function Home() {
         {/*popular car list start */}
         <div>
           <div className="w-full flex items-center justify-between px-2">
-            <p className="text-gray_text font-semibold">Popular Car</p>
+            <p className="text-gray_text font-semibold">Popular Cars</p>
             <Button
               variant="ghost"
               className="hover:bg-transparent text-main_blue hover:bg-hover_blue"

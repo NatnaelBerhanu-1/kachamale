@@ -2,6 +2,7 @@ export const fakeCarsList = [
   {
     id: 1,
     thumbnail: "/assets/Car2.png",
+    status: "onSale",
     images: [
       "/assets/carWheel.png",
       "/assets/carChair.png",
@@ -36,8 +37,7 @@ export const fakeCarsList = [
           "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
       },
       {
-        avatar:
-          "",
+        avatar: "",
         name: "Yohannes Ademe",
         position: "CEO at Lorem",
         rating: 4,
@@ -58,6 +58,7 @@ export const fakeCarsList = [
   {
     id: 2,
     thumbnail: "/assets/Car.png",
+    status: "sold",
     images: [
       "/assets/carWheel.png",
       "/assets/carChair.png",
@@ -92,8 +93,7 @@ export const fakeCarsList = [
           " Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       },
       {
-        avatar:
-          "",
+        avatar: "",
         name: "Yohannes Ademe",
         position: "CEO at Lorem",
         rating: 4,
@@ -115,6 +115,7 @@ export const fakeCarsList = [
   {
     id: 3,
     thumbnail: "/assets/Car2.png",
+    status: "pending",
     images: [
       "/assets/carWheel.png",
       "/assets/carChair.png",
@@ -172,6 +173,7 @@ export const fakeCarsList = [
   {
     id: 4,
     thumbnail: "/assets/Car.png",
+    status: "sold",
     images: [
       "/assets/carWheel.png",
       "/assets/carChair.png",
@@ -196,8 +198,7 @@ export const fakeCarsList = [
     oldPrice: 50000,
     reviews: [
       {
-        avatar:
-          "",
+        avatar: "",
         name: "Darik Adem",
         position: "CEO at Safaricom",
         rating: 3.5,

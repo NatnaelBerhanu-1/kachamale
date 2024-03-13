@@ -1,6 +1,7 @@
 export interface CarListType {
   id: number | string;
   thumbnail: string;
+  status: string;
   images: string[];
   name: string;
   abbreviateName: string;
