@@ -12,14 +12,14 @@ function RegisterForm() {
         alt="car svg"
         width={500}
         height={1000}
-        className="absolute top-4 right-4 max-w-[300px] z-0 opacity-30"
+        className="absolute top-4 right-4 max-w-[350px] z-0 opacity-30"
       />
       <Image
         src={"/assets/authSvg2.png"}
         alt="car svg"
         width={500}
         height={1000}
-        className="absolute bottom-4 left-4 max-w-[300px] z-0"
+        className="absolute bottom-4 left-4 max-w-[350px] z-0"
       />
       <div className="max-w-[400px] w-full shadow-md mx-auto p-10 rounded-lg z-10">
         <FormHeader
