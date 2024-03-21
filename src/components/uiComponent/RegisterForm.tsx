@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import { useFormState } from "react-dom";
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import FormHeader from "./FormHeader";
 import { countryCodes } from "@/lib/countryCode";
+import { registerUser } from "@/actions/authActions";
 
 interface CountryCodeType {
   country: string;
@@ -16,9 +18,16 @@ function RegisterForm() {
   const [policyAgreement, setPolicyAgreement] = useState<boolean>(false);
   const [fullName, setFullName] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [countryCode, setCountryCode] = useState<number>(0);
+  const [countryCode, setCountryCode] = useState<string>("");
+  const [formState, formAction] = useFormState<any, FormData>(registerUser, 0);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    
+  },[formState])
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     if (e.target.name == "privacy_checkbox") {
       if (e.target.checked) {
         setPolicyAgreement(true);
@@ -32,6 +41,10 @@ function RegisterForm() {
     }
     if (e.target.name == "full_name") {
       setFullName(e.target.value);
+    }
+
+    if (e.target.name == "country_code") {
+      setCountryCode(e.target.value);
     }
   };
   return (
@@ -55,7 +68,7 @@ function RegisterForm() {
           title="Create an account"
           description="Welcome! Please create your profile."
         />
-        <form action="#" className="mt-8 flex flex-col gap-5">
+        <form action={formAction} className="mt-8 flex flex-col gap-5">
           <div className="flex flex-col">
             <label
               htmlFor="name"
@@ -68,6 +81,7 @@ function RegisterForm() {
               type="text"
               id="name"
               name="full_name"
+              required
               placeholder="Enter your name"
               onChange={handleChange}
               className="mt-1 rounded-lg border-gray-200 bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-4 w-full outline-none"
@@ -87,16 +101,20 @@ function RegisterForm() {
                 type="number"
                 id="phoneNumber"
                 name="phone_number"
+                required
                 placeholder="Enter your Phone number"
                 onChange={handleChange}
                 className="remove-arrow rounded-lg border-gray-200 h-full bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-24 w-full outline-none"
               />
 
               <select
-                name="HeadlineAct"
+                name="country_code"
+                required
                 id="HeadlineAct"
-                className="absolute left-0 top-0 border w-full max-w-20 h-full rounded-bl-lg rounded-tl-lg text-xs font-semibold"
+                className="absolute left-0 top-0 border w-full max-w-20 h-full rounded-bl-lg rounded-tl-lg text-sm font-semibold"
+                onChange={handleChange}
               >
+                <option value="">+00</option>
                 {countryCodes.map(
                   (countryDetail: CountryCodeType, idx: number) => (
                     <option value={countryDetail.code} key={idx}>
@@ -135,7 +153,10 @@ function RegisterForm() {
             <Button
               className="bg-main_blue hover:bg-hover_blue"
               disabled={
-                Boolean(!phoneNumber) || Boolean(!fullName) || !policyAgreement
+                Boolean(!phoneNumber) ||
+                Boolean(!fullName) ||
+                !policyAgreement ||
+                !countryCode
               }
             >
               Get Started
@@ -167,94 +188,3 @@ function RegisterForm() {
 }
 
 export default RegisterForm;
-
-{
-  /* <div className="max-w-xl lg:max-w-3xl">
-            <div className="w-full">
-              <FormHeader
-                title="Create an account"
-                description="Welcome back! Please enter your details."
-              />
-            </div>
-            <form action="#" className="mt-8 flex flex-col gap-5">
-              <div className="flex flex-col">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-600"
-                >
-                  Name*
-                </label>
-
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter your name"
-                  className="mt-1 rounded-lg border-gray-200 bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-4 w-full outline-none"
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label
-                  htmlFor="phoneNumber"
-                  className="block text-sm font-medium text-gray-600"
-                >
-                  Phone Number*
-                </label>
-
-                <input
-                  type="tel"
-                  id="phoneNumber"
-                  name="phone_number"
-                  placeholder="Enter your Phone number"
-                  className="mt-1 rounded-lg border-gray-200 bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-4 w-full outline-none"
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-600"
-                >
-                  Password*
-                </label>
-
-                <input
-                  type="password"
-                  id="Password"
-                  name="password"
-                  placeholder="Create a password"
-                  className="mt-1 rounded-lg border-gray-200 bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-4 w-full outline-none"
-                />
-                <small className="text-gray_text">
-                  Must be at least 8 characters.
-                </small>
-              </div>
-
-              <div className="flex flex-col mt-5 gap-3">
-                <Button className="bg-[#1366D9] hover:bg-[#1366d9d4]">
-                  Sign in
-                </Button>
-                <Button className="bg-transparent text-black hover:bg-black/5 border flex gap-1">
-                  <Image
-                    src={"/assets/googleIcon.png"}
-                    alt="google icon"
-                    width={50}
-                    height={50}
-                    className="h-4 w-4 object-contain"
-                  />
-                  <p>Sign in with Google</p>
-                </Button>
-              </div>
-              <span className="text-sm flex gap-1 items-center justify-center">
-                <p className="text-gray_text">Already have an account?</p>{" "}
-                <Link
-                  href={"/signin"}
-                  className="font-semibold text-main_blue hover:underline"
-                >
-                  Log in
-                </Link>
-              </span>
-            </form>
-          </div> */
-}
