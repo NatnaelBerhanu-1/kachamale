@@ -15,10 +15,25 @@ interface CountryCodeType {
 function RegisterForm() {
   const [policyAgreement, setPolicyAgreement] = useState<boolean>(false);
   const [fullName, setFullName] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<number>(0);
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [countryCode, setCountryCode] = useState<number>(0);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name == "privacy_checkbox") {
+      if (e.target.checked) {
+        setPolicyAgreement(true);
+      } else {
+        setPolicyAgreement(false);
+      }
+    }
+
+    if (e.target.name == "phone_number") {
+      setPhoneNumber(e.target.value);
+    }
+    if (e.target.name == "full_name") {
+      setFullName(e.target.value);
+    }
+  };
   return (
     <section className="bg-white min-h-screen flex flex-col items-center justify-center relative">
       <Image
@@ -69,12 +84,12 @@ function RegisterForm() {
 
             <div className="relative">
               <input
-                type="tel"
+                type="number"
                 id="phoneNumber"
                 name="phone_number"
                 placeholder="Enter your Phone number"
                 onChange={handleChange}
-                className="rounded-lg border-gray-200 h-full bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-24 w-full outline-none"
+                className="remove-arrow rounded-lg border-gray-200 h-full bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-24 w-full outline-none"
               />
 
               <select
@@ -93,32 +108,13 @@ function RegisterForm() {
             </div>
           </div>
 
-          {/* <div className="flex flex-col">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-600"
-            >
-              Password*
-            </label>
-
-            <input
-              type="password"
-              id="Password"
-              name="password"
-              placeholder="Create a password"
-              className="mt-1 rounded-lg border-gray-200 bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-4 w-full outline-none"
-            />
-            <small className="text-gray_text">
-              Must be at least 8 characters.
-            </small>
-          </div> */}
-
           <div className="col-span-6">
             <label htmlFor="rememberMe" className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 id="rememberMe"
-                name="remember_me"
+                name="privacy_checkbox"
+                onChange={handleChange}
                 className="size-4 rounded-md border-gray-200 bg-white shadow-sm"
               />
 
@@ -136,7 +132,12 @@ function RegisterForm() {
           </div>
 
           <div className="flex flex-col mt-5 gap-3">
-            <Button className="bg-main_blue hover:bg-hover_blue">
+            <Button
+              className="bg-main_blue hover:bg-hover_blue"
+              disabled={
+                Boolean(!phoneNumber) || Boolean(!fullName) || !policyAgreement
+              }
+            >
               Get Started
             </Button>
             <Button className="bg-transparent text-black hover:bg-black/5 border flex gap-1">
