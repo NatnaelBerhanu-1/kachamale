@@ -1,10 +1,24 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import FormHeader from "./FormHeader";
+import { countryCodes } from "@/lib/countryCode";
+
+interface CountryCodeType {
+  country: string;
+  code: string;
+  iso: string;
+}
 
 function RegisterForm() {
+  const [policyAgreement, setPolicyAgreement] = useState<boolean>(false);
+  const [fullName, setFullName] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<number>(0);
+  const [countryCode, setCountryCode] = useState<number>(0);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
   return (
     <section className="bg-white min-h-screen flex flex-col items-center justify-center relative">
       <Image
@@ -40,6 +54,7 @@ function RegisterForm() {
               id="name"
               name="full_name"
               placeholder="Enter your name"
+              onChange={handleChange}
               className="mt-1 rounded-lg border-gray-200 bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-4 w-full outline-none"
             />
           </div>
@@ -52,13 +67,30 @@ function RegisterForm() {
               Phone Number
             </label>
 
-            <input
-              type="tel"
-              id="phoneNumber"
-              name="phone_number"
-              placeholder="Enter your Phone number"
-              className="mt-1 rounded-lg border-gray-200 bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-4 w-full outline-none"
-            />
+            <div className="relative">
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phone_number"
+                placeholder="Enter your Phone number"
+                onChange={handleChange}
+                className="rounded-lg border-gray-200 h-full bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-24 w-full outline-none"
+              />
+
+              <select
+                name="HeadlineAct"
+                id="HeadlineAct"
+                className="absolute left-0 top-0 border w-full max-w-20 h-full rounded-bl-lg rounded-tl-lg text-xs font-semibold"
+              >
+                {countryCodes.map(
+                  (countryDetail: CountryCodeType, idx: number) => (
+                    <option value={countryDetail.code} key={idx}>
+                      {countryDetail.iso} | +{countryDetail.code}
+                    </option>
+                  )
+                )}
+              </select>
+            </div>
           </div>
 
           {/* <div className="flex flex-col">
