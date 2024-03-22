@@ -29,7 +29,7 @@ function RegisterForm() {
       toast.success("Registration finished please Activate Your Account");
       setPending(false);
     } else if (formState?.error) {
-      toast.error("Something went wrong Please try again");
+      toast.error(formState?.error);
       setPending(false);
     }
   }, [formState]);
