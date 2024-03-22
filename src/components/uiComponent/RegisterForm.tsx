@@ -7,6 +7,8 @@ import Link from "next/link";
 import FormHeader from "./FormHeader";
 import { countryCodes } from "@/lib/countryCode";
 import { registerUser } from "@/actions/authActions";
+import { toast } from "react-toastify";
+import Spinner from "./Spinner";
 
 interface CountryCodeType {
   country: string;
@@ -20,15 +22,23 @@ function RegisterForm() {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [countryCode, setCountryCode] = useState<string>("");
   const [formState, formAction] = useFormState<any, FormData>(registerUser, 0);
+  const [pending, setPending] = useState<boolean>(false);
 
   useEffect(() => {
-    
-  },[formState])
+    if (formState?.success) {
+      toast.success("Registration finished please Activate Your Account");
+      setPending(false);
+    } else if (formState?.error) {
+      toast.error("Something went wrong Please try again");
+      setPending(false);
+    }
+  }, [formState]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     if (e.target.name == "privacy_checkbox") {
+      //@ts-ignore
       if (e.target.checked) {
         setPolicyAgreement(true);
       } else {
@@ -49,6 +59,11 @@ function RegisterForm() {
   };
   return (
     <section className="bg-white min-h-screen flex flex-col items-center justify-center relative">
+      {pending && (
+        <div className="absolute z-20">
+          <Spinner />
+        </div>
+      )}
       <Image
         src={"/assets/authSvg1.png"}
         alt="car svg"
@@ -158,6 +173,7 @@ function RegisterForm() {
                 !policyAgreement ||
                 !countryCode
               }
+              onClick={() => setPending(true)}
             >
               Get Started
             </Button>
