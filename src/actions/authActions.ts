@@ -25,7 +25,7 @@ export const registerUser = async (currentValue: any, formData: FormData) => {
     });
     const savedUser = await newUser.save();
     if (savedUser) {
-      return { success: true, savedUser };
+      return { success: true };
     }
   } catch (error: any) {
     console.log(error);

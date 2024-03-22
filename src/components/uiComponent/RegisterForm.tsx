@@ -9,6 +9,7 @@ import { countryCodes } from "@/lib/countryCode";
 import { registerUser } from "@/actions/authActions";
 import { toast } from "react-toastify";
 import Spinner from "./Spinner";
+import { redirect } from "next/navigation";
 
 interface CountryCodeType {
   country: string;
@@ -28,6 +29,7 @@ function RegisterForm() {
     if (formState?.success) {
       toast.success("Registration finished please Activate Your Account");
       setPending(false);
+      redirect("/signin");
     } else if (formState?.error) {
       toast.error(formState?.error);
       setPending(false);
