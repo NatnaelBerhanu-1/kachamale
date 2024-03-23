@@ -10,6 +10,8 @@ import { registerUser } from "@/actions/authActions";
 import { toast } from "react-toastify";
 import Spinner from "./Spinner";
 import { redirect } from "next/navigation";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 interface CountryCodeType {
   country: string;
@@ -112,35 +114,11 @@ function RegisterForm() {
             >
               Phone Number
             </label>
-
-            <div className="relative">
-              <input
-                type="number"
-                id="phoneNumber"
-                name="phone_number"
-                required
-                placeholder="Enter your Phone number"
-                onChange={handleChange}
-                className="remove-arrow rounded-lg border-gray-200 h-full bg-white text-sm text-gray-700 font-medium shadow-sm border py-2 indent-24 w-full outline-none"
-              />
-
-              <select
-                name="country_code"
-                required
-                id="HeadlineAct"
-                className="absolute left-0 top-0 border w-full max-w-20 h-full rounded-bl-lg rounded-tl-lg text-sm font-semibold"
-                onChange={handleChange}
-              >
-                <option value="">+00</option>
-                {countryCodes.map(
-                  (countryDetail: CountryCodeType, idx: number) => (
-                    <option value={countryDetail.code} key={idx}>
-                      {countryDetail.iso} | +{countryDetail.code}
-                    </option>
-                  )
-                )}
-              </select>
-            </div>
+            <PhoneInput
+              country={"us"}
+              value={phoneNumber}
+              onChange={(phone: string) => setPhoneNumber(phone)}
+            />
           </div>
 
           <div className="col-span-6">

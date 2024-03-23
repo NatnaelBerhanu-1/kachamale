@@ -10,7 +10,7 @@ export const registerUser = async (currentValue: any, formData: FormData) => {
   if (!full_name || !phone_number || !country_code || !privacy_checkbox) {
     return { error: "All fields are required." };
   }
-  const phoneNumber = country_code + "-" + phone_number;
+  const phoneNumber = country_code + "+" + phone_number;
   try {
     await connectDB();
 
