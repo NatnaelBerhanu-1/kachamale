@@ -23,6 +23,7 @@ import {
 import { toast } from "react-toastify";
 import Spinner from "./Spinner";
 import { findUserByPhone } from "@/actions/findUserByPhone";
+import { getUserAndSaveToCookie } from "@/actions/getUserAndSaveToCookie";
 
 function SigninForm() {
   const auth = getAuth(app);
@@ -92,7 +93,7 @@ function SigninForm() {
       try {
         setIsLoading2(true);
         const list = await verificationCodeId.confirm(e);
-        console.log(list);
+        await getUserAndSaveToCookie(list.user.phoneNumber)
         setIsLoading2(false);
       } catch (error) {
         setIsLoading2(false);
