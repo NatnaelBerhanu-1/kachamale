@@ -5,7 +5,6 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import FormHeader from "./FormHeader";
-import { countryCodes } from "@/lib/countryCode";
 import { registerUser } from "@/actions/authActions";
 import { toast } from "react-toastify";
 import Spinner from "./Spinner";
@@ -13,17 +12,10 @@ import { redirect } from "next/navigation";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-interface CountryCodeType {
-  country: string;
-  code: string;
-  iso: string;
-}
-
 function RegisterForm() {
   const [policyAgreement, setPolicyAgreement] = useState<boolean>(false);
   const [fullName, setFullName] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [countryCode, setCountryCode] = useState<string>("");
   const [formState, formAction] = useFormState<any, FormData>(registerUser, 0);
   const [pending, setPending] = useState<boolean>(false);
 
@@ -56,10 +48,6 @@ function RegisterForm() {
     if (e.target.name == "full_name") {
       setFullName(e.target.value);
     }
-
-    if (e.target.name == "country_code") {
-      setCountryCode(e.target.value);
-    }
   };
   return (
     <section className="bg-white min-h-screen flex flex-col items-center justify-center relative">
@@ -88,6 +76,7 @@ function RegisterForm() {
           description="Welcome! Please create your profile."
         />
         <form action={formAction} className="mt-8 flex flex-col gap-5">
+          <input type="hidden" name="phoneNumber" value={phoneNumber} />
           <div className="flex flex-col">
             <label
               htmlFor="name"
@@ -148,10 +137,7 @@ function RegisterForm() {
             <Button
               className="bg-main_blue hover:bg-hover_blue"
               disabled={
-                Boolean(!phoneNumber) ||
-                Boolean(!fullName) ||
-                !policyAgreement ||
-                !countryCode
+                Boolean(!phoneNumber) || Boolean(!fullName) || !policyAgreement
               }
               onClick={() => setPending(true)}
             >
