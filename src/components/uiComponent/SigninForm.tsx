@@ -54,31 +54,36 @@ function SigninForm() {
 
     const phone = "+" + phoneNumber;
 
-    const res = await findUserByPhone({ phoneNumber }) as {success?:boolean, error?:boolean}
-    if(res.success){
-        try {
-      setIsLoading(true);
-      const confirmation: any = await signInWithPhoneNumber(
-        auth,
-        phone,
-        //@ts-ignore
-        window.recaptchaVerifier
-      );
-      setVerificationCodeId(confirmation);
-      setOtpId(true);
-      toast.success(
-        "Please Enter the number that has been sent to your mobile."
-      );
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error);
+    const res = (await findUserByPhone({ phoneNumber })) as {
+      success?: boolean;
+      error?: boolean;
+    };
+    console.log(res);
+    if (res.success) {
+      try {
+        setIsLoading(true);
+        const confirmation: any = await signInWithPhoneNumber(
+          auth,
+          phone,
+          //@ts-ignore
+          window.recaptchaVerifier
+        );
+        setVerificationCodeId(confirmation);
+        setOtpId(true);
+        toast.success(
+          "Please Enter the number that has been sent to your mobile."
+        );
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        console.log(error);
+      }
     }
-    }
-    if(res.error){
-      toast.success(
+    if (res.error) {
+      toast.warn(
         "This phone is not registered. please register and come again"
       );
+      redirect("/register");
     }
   };
 

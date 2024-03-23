@@ -1,5 +1,5 @@
+"use server";
 import mongoose from "mongoose";
-console.log(process.env.MONGOOSE_URI);
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGOOSE_URI!);
