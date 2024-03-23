@@ -1,11 +1,16 @@
+"use server";
 import connectDB from "@/lib/config";
-import UserModel from "@/model/userRegistrationModel";
+import userRegistrationModel from "@/model/userRegistrationModel";
 
-export const findUserByPhone = async ({ phoneNumber }: { phoneNumber: string }) => {
+export const findUserByPhone = async ({
+  phoneNumber,
+}: {
+  phoneNumber: string;
+}) => {
   try {
     await connectDB();
-    const user = await UserModel.find({ phoneNumber });
-    if (user) {
+    const existUser = await userRegistrationModel.find({ phoneNumber }).lean();
+    if (existUser.length) {
       return { success: true };
     } else {
       return { error: true };
