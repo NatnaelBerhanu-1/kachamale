@@ -28,7 +28,10 @@ export const getUserAndSaveToCookie = async ({
       fullName: user.fullName,
       phoneNumber: user.phoneNumber,
     };
-    const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_KEY!);
+    const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_KEY!, {
+      //Set the expiration
+      expiresIn: 3600 * 24 * 60 * 60
+    });
 
     //add this token to cookie authentication header
 
