@@ -30,7 +30,18 @@ export default function RootLayout({
         <main className="bg-[#F6F7F9] h-screen">
           <div>{children}</div>
         </main>
-        <ToastContainer />
+        <ToastContainer
+          position="top-center"
+          autoClose={10000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </body>
     </html>
   );
