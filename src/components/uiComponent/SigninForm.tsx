@@ -28,6 +28,8 @@ import { getUserAndSaveToCookie } from "@/actions/getUserAndSaveToCookie";
 function SigninForm() {
   const auth = getAuth(app);
   const [recaptchaResponse, setRecaptchaResponse] = useState<boolean>(false);
+  const [saveUserId, setSaveUserId] = useState<boolean>(false);
+  const [uid, setUid] = useState<any>("");
 
   useEffect(() => {
     //@ts-ignore
@@ -44,6 +46,12 @@ function SigninForm() {
     );
   }, [auth]);
 
+  useEffect(() => {
+    if (saveUserId && uid) {
+      localStorage.setItem("et_uid", uid.toString());
+    }
+  }, [saveUserId, uid]);
+
   const [phoneNumber, setPhoneNumber] = useState("");
   const [verificationCodeId, setVerificationCodeId] = useState<any>("");
   const [otpId, setOtpId] = useState(false);
@@ -59,7 +67,6 @@ function SigninForm() {
       success?: boolean;
       error?: boolean;
     };
-    console.log(res);
     if (res.success) {
       try {
         setIsLoading(true);
@@ -93,7 +100,11 @@ function SigninForm() {
       try {
         setIsLoading2(true);
         const list = await verificationCodeId.confirm(e);
-        await getUserAndSaveToCookie(list.user.phoneNumber)
+        const user = (await getUserAndSaveToCookie({
+          phoneNumber: list.user.phoneNumber,
+        })) as { uid: string };
+        setSaveUserId(true);
+        setUid(user.uid);
         setIsLoading2(false);
       } catch (error) {
         setIsLoading2(false);
