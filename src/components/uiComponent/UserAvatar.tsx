@@ -7,7 +7,10 @@ async function UserAvatar() {
   return (
     <>
       {user ? (
-        <Avatar title={user.fullName + "profile"} className="cursor-pointer">
+        <Avatar
+          title={user.fullName + " " + "profile"}
+          className="cursor-pointer"
+        >
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback className="animate-pulse"></AvatarFallback>
         </Avatar>
