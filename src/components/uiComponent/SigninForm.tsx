@@ -62,6 +62,7 @@ function SigninForm() {
     e.preventDefault();
 
     const phone = "+" + phoneNumber;
+    setIsLoading(true);
 
     const res = (await findUserByPhone({ phoneNumber })) as {
       success?: boolean;
@@ -69,7 +70,6 @@ function SigninForm() {
     };
     if (res.success) {
       try {
-        setIsLoading(true);
         const confirmation: any = await signInWithPhoneNumber(
           auth,
           phone,
