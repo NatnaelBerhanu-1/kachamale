@@ -7,7 +7,7 @@ import Link from "next/link";
 import { app } from "@/lib/firebase";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import {
   getAuth,
   RecaptchaVerifier,
@@ -26,6 +26,7 @@ import { findUserByPhone } from "@/actions/findUserByPhone";
 import { getUserAndSaveToCookie } from "@/actions/getUserAndSaveToCookie";
 
 function SigninForm() {
+  const { push } = useRouter();
   const auth = getAuth(app);
   const [recaptchaResponse, setRecaptchaResponse] = useState<boolean>(false);
   const [saveUserId, setSaveUserId] = useState<boolean>(false);
@@ -91,7 +92,7 @@ function SigninForm() {
       toast.warn(
         "This phone is not registered. please register and come again"
       );
-      redirect("/register");
+      push("/register");
     }
   };
 
