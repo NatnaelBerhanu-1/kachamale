@@ -107,6 +107,7 @@ function SigninForm() {
         setSaveUserId(true);
         setUid(user.uid);
         setIsLoading2(false);
+        push("/");
       } catch (error) {
         setIsLoading2(false);
         console.log(error);
@@ -119,7 +120,6 @@ function SigninForm() {
       {!otpId ? (
         <section className="bg-white min-h-screen flex flex-col items-center justify-center relative">
           {isLoading && recaptchaResponse && <Spinner />}
-          {isLoading2 && <Spinner />}
           {!recaptchaResponse && <div id="recaptcha-container"></div>}
           <Image
             src={"/assets/authTrasparentSvg.png"}
@@ -202,6 +202,7 @@ function SigninForm() {
         </section>
       ) : (
         <section className="bg-white min-h-screen flex flex-col items-center justify-center relative">
+          {isLoading2 && <Spinner />}
           <Image
             src={"/assets/authSVG1.png"}
             alt="car svg"
@@ -235,37 +236,41 @@ function SigninForm() {
               </p>
               <p className="font-medium tracking-wide">******1234</p>
               <div>
-                <InputOTP onChange={handleChange} maxLength={6}>
+                <InputOTP
+                  disabled={isLoading2}
+                  onChange={handleChange}
+                  maxLength={6}
+                >
                   <InputOTPGroup className="flex gap-2">
                     <InputOTPSlot
                       index={0}
-                      className="border border-black/50 rounded-lg"
+                      className="border border-black/30 outline-none"
                     />
                     <InputOTPSlot
                       index={1}
-                      className="border border-black/50 rounded-lg"
+                      className="border border-black/30 outline-none"
                     />
                   </InputOTPGroup>
                   <InputOTPSeparator />
                   <InputOTPGroup className="flex gap-2">
                     <InputOTPSlot
                       index={2}
-                      className="border border-black/50 rounded-lg"
+                      className="border border-black/30 outline-none"
                     />
                     <InputOTPSlot
                       index={3}
-                      className="border border-black/50 rounded-lg"
+                      className="border border-black/30 outline-none"
                     />
                   </InputOTPGroup>
                   <InputOTPSeparator />
                   <InputOTPGroup className="flex gap-2">
                     <InputOTPSlot
                       index={4}
-                      className="border border-black/50 rounded-lg"
+                      className="border border-black/30 outline-none"
                     />
                     <InputOTPSlot
                       index={5}
-                      className="border border-black/50 rounded-lg"
+                      className="border border-black/30 outline-none"
                     />
                   </InputOTPGroup>
                 </InputOTP>
