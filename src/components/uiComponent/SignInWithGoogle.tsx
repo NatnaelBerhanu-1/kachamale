@@ -51,7 +51,7 @@ function SignInWithGoogle() {
         height={50}
         className="h-4 w-4 object-contain"
       />
-      <p>Sign in with Google</p>
+      <p>Continue in with Google</p>
     </Button>
   );
 }

@@ -11,6 +11,7 @@ import Spinner from "./Spinner";
 import { redirect } from "next/navigation";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import SignInWithGoogle from "./SignInWithGoogle";
 
 function RegisterForm() {
   const [policyAgreement, setPolicyAgreement] = useState<boolean>(false);
@@ -143,16 +144,9 @@ function RegisterForm() {
             >
               Get Started
             </Button>
-            <Button className="bg-transparent text-black hover:bg-black/5 border flex gap-1">
-              <Image
-                src={"/assets/googleIcon.png"}
-                alt="google icon"
-                width={50}
-                height={50}
-                className="h-4 w-4 object-contain"
-              />
-              <p>Sign up with Google</p>
-            </Button>
+          </div>
+          <div className="">
+            <SignInWithGoogle />
           </div>
           <span className="text-sm flex gap-1 items-center justify-center">
             <p className="text-gray_text">Already have an account?</p>{" "}
