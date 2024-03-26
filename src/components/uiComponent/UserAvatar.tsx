@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LogOut } from "lucide-react";
+import LogOutButton from "./LogOutButton";
 
 async function UserAvatar() {
   const user = await verifyToken();
@@ -35,7 +36,7 @@ async function UserAvatar() {
             <DropdownMenuItem>Billing</DropdownMenuItem>
             <DropdownMenuItem>Team</DropdownMenuItem>
             <DropdownMenuItem className="my-2 font-semibold bg-slate-100 flex items-center">
-              <LogOut className="size-4" /> Log out
+              <LogOutButton />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
