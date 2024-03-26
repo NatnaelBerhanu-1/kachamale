@@ -182,17 +182,20 @@ function SigninForm() {
                   Sign in
                 </Button>
               </div>
-              <span className="text-sm flex gap-1 justify-center items-center">
-                <p className="text-gray_text">Don’t have an account?</p>{" "}
-                <Link
-                  href={"/register"}
-                  className="font-semibold text-main_blue hover:underline"
-                >
-                  Sign up
-                </Link>
-              </span>
             </form>
-            <SignInWithGoogle />
+            <div className="my-2">
+              {" "}
+              <SignInWithGoogle />
+            </div>
+            <span className="text-sm flex gap-1 justify-center items-center">
+              <p className="text-gray_text">Don’t have an account?</p>{" "}
+              <Link
+                href={"/register"}
+                className="font-semibold text-main_blue hover:underline"
+              >
+                Sign up
+              </Link>
+            </span>
           </div>
         </section>
       ) : (

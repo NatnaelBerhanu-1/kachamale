@@ -41,7 +41,7 @@ function SignInWithGoogle() {
   };
   return (
     <Button
-      className="bg-transparent text-black hover:bg-black/5 border flex gap-1"
+      className="bg-transparent text-black hover:bg-black/5 border flex gap-1 w-full"
       onClick={() => signInUser()}
     >
       <Image
