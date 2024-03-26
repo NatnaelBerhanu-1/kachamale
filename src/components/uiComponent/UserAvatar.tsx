@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { verifyToken } from "@/actions/verifyToken";
+
 async function UserAvatar() {
   const user = await verifyToken();
   return (

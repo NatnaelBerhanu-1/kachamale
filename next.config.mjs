@@ -2,7 +2,8 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "learnyzen.com", port: "" },
+      { protocol: "https", hostname: "learnyzen.com" },
+      { protocol: "https", hostname: "cdn.icon-icons.com" },
     ],
   },
 };

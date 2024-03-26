@@ -7,7 +7,7 @@ import Link from "next/link";
 import { app } from "@/lib/firebase";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   getAuth,
   RecaptchaVerifier,
@@ -24,6 +24,7 @@ import { toast } from "react-toastify";
 import Spinner from "./Spinner";
 import { findUserByPhone } from "@/actions/findUserByPhone";
 import { getUserAndSaveToCookie } from "@/actions/getUserAndSaveToCookie";
+import SignInWithGoogle from "./SignInWithGoogle";
 
 function SigninForm() {
   const { push } = useRouter();
@@ -174,18 +175,11 @@ function SigninForm() {
               </div>
 
               <div className="flex flex-col mt-5 gap-3">
-                <Button className="bg-main_blue hover:bg-hover_blue">
+                <Button
+                  className="bg-main_blue hover:bg-hover_blue"
+                  type="submit"
+                >
                   Sign in
-                </Button>
-                <Button className="bg-transparent text-black hover:bg-black/5 border flex gap-1">
-                  <Image
-                    src={"/assets/googleIcon.png"}
-                    alt="google icon"
-                    width={50}
-                    height={50}
-                    className="h-4 w-4 object-contain"
-                  />
-                  <p>Sign in with Google</p>
                 </Button>
               </div>
               <span className="text-sm flex gap-1 justify-center items-center">
@@ -198,6 +192,7 @@ function SigninForm() {
                 </Link>
               </span>
             </form>
+            <SignInWithGoogle />
           </div>
         </section>
       ) : (

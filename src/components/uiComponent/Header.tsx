@@ -5,14 +5,13 @@ import Search from "./Search";
 import { Suspense } from "react";
 import Spinner from "./Spinner";
 
+
 function Header() {
+
   return (
     <div className="h-[72px] bg-main_blue grid grid-cols-2 items-center px-16">
       <div className="flex gap-4">
-        <Link
-          href={"/"}
-          className="flex items-center justify-center"
-        >
+        <Link href={"/"} className="flex items-center justify-center">
           <Image
             src={"/assets/logo.png"}
             alt="logo"
@@ -56,6 +55,7 @@ function Header() {
           className="h-[40px] w-[40px]"
         />
         <UserAvatar />
+       
       </div>
     </div>
   );

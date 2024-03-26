@@ -10,17 +10,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
-    isActive: {
+    profile: {
+      type: String,
+      default:
+        "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png",
+    },
+    email: {
+      type: String,
+      unique: true,
+    },
+    isEmailVerified: {
       type: Boolean,
       default: false,
-    },
-    isOtpValidate: {
-      type: Boolean,
-      default: false,
-    },
-    agreedToPolicyAndTerms: {
-      type: Boolean,
-      default: true,
     },
   },
   { timestamps: true }
