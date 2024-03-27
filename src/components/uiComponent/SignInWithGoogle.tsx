@@ -1,5 +1,10 @@
 "use client";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+} from "firebase/auth";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { signUserWithGoogle } from "@/actions/googleUser";
@@ -9,35 +14,39 @@ import { useRouter } from "next/navigation";
 function SignInWithGoogle() {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
-  const [uid, setUid] = useState("");
-  const [saveUserId, setSaveUserId] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const { push } = useRouter();
 
   useEffect(() => {
-    if (saveUserId && uid) {
-      localStorage.setItem("et_uid", uid.toString());
-      push("/");
-    }
-  }, [saveUserId, uid]);
+    getRedirectResult(auth)
+      .then((response) => {
+        setLoading(true);
+        //@ts-ignore
+        const user = response?.user?.reloadUserInfo;
+        signUserWithGoogle({
+          email: user.email,
+          name: user.displayName,
+          profile: user.photoUrl,
+        })
+          .then((userId) => {
+            if (userId?.uid) {
+              localStorage.setItem("et_uid", userId?.uid.toString());
+              push("/");
+            }
+            setLoading(false);
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, []);
 
   const signInUser = async () => {
-    try {
-      const signin = await signInWithPopup(auth, provider);
-      //@ts-ignore
-      const user: any = signin.user.reloadUserInfo;
-      const userId = await signUserWithGoogle({
-        email: user.email,
-        name: user.displayName,
-        profile: user.photoUrl,
-      });
-
-      if (userId?.uid) {
-        setSaveUserId(true);
-        setUid(userId.uid);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    signInWithRedirect(auth, provider)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   return (
     <Button
