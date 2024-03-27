@@ -1,4 +1,3 @@
-import { verifyToken } from "@/actions/verifyToken";
 import SigninForm from "@/components/uiComponent/SigninForm";
 import { Metadata } from "next";
 import React from "react";

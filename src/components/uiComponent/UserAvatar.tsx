@@ -22,7 +22,7 @@ async function UserAvatar() {
           <DropdownMenuTrigger>
             {" "}
             <Avatar
-              title={user.fullName + " " + "profile"}
+              title={user?.fullName + " " + "profile"}
               className="cursor-pointer"
             >
               <AvatarImage src="https://github.com/shadcn.png" />

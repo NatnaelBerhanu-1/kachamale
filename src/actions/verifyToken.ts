@@ -2,10 +2,6 @@
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 
-interface userInfoType {
-  id: string;
-}
-
 export const verifyToken = async () => {
   const tokenString: any = cookies().get("Et_car_Token")?.value || "";
 
