@@ -44,6 +44,7 @@ export const signUserWithGoogle = async ({
   try {
     await connectDB();
     const user = (await UserModel.findOne({ email }).lean()) as userInfoType;
+
     if (user) {
       const userInfo = {
         id: user._id,

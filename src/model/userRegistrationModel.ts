@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     phoneNumber: {
       type: String,
       unique: true,
+      default: 'NE',
     },
     profile: {
       type: String,
@@ -18,6 +19,7 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       unique: true,
+      default: 'NE',
     },
     isEmailVerified: {
       type: Boolean,
