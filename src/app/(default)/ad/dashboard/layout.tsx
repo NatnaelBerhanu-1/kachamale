@@ -5,7 +5,7 @@ import {
   dashboardSidebarPrefData,
 } from "@/lib/dashboardSidebarData";
 
-function layout({ children }: { children: React.ReactNode }) {
+async function layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="grid grid-cols-4">
       <div className="col-span-1 min-h-screen px-7 py-8 flex flex-col gap-5 bg-white dark:bg-transparent border-r-2">

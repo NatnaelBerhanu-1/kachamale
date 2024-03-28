@@ -19,11 +19,11 @@ async function UserAvatar() {
     <>
       {user ? (
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger className="outline-none">
             {" "}
             <Avatar
               title={user?.fullName + " " + "profile"}
-              className="cursor-pointer"
+              className="cursor-pointer outline-none"
             >
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback className="animate-pulse"></AvatarFallback>
@@ -32,9 +32,15 @@ async function UserAvatar() {
           <DropdownMenuContent className="z-40">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Team</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={"/profile"}>Profile</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={"/ad/add_car"}>Post Car</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={"/ad/dashboard"}>My Dashboard</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem className="my-2 font-semibold bg-slate-100 flex items-center">
               <LogOutButton />
             </DropdownMenuItem>
