@@ -55,7 +55,7 @@ export const signUserWithGoogle = async ({
       return { uid: id };
     }
     if (!user) {
-      const nameForUserName = name.split(" ").join("_");
+      const nameForUserName = name.split(" ")[0]
       const generatedUsername = generateFromEmail(
         nameForUserName.toString().toLowerCase(),
         4

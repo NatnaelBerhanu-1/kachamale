@@ -19,8 +19,8 @@ export const registerUser = async (currentValue: any, formData: FormData) => {
     if (existUser) {
       return { error: "Phone Number Already Registered." };
     }
-    const name:string = full_name.toString()
-    const nameForUserName = name.split(" ")[1];
+    const name: string = full_name.toString();
+    const nameForUserName = name.split(" ")[0];
     const generatedUsername = generateFromEmail(
       nameForUserName.toString().toLowerCase(),
       4
@@ -31,7 +31,7 @@ export const registerUser = async (currentValue: any, formData: FormData) => {
     const newUser = new UserModel({
       fullName: full_name,
       phoneNumber,
-      userName
+      userName,
     });
     const savedUser = await newUser.save();
     if (savedUser) {
