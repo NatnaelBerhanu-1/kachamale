@@ -55,14 +55,33 @@ export const signUserWithGoogle = async ({
       return { uid: id };
     }
     if (!user) {
-      const nameForUserName = name.split(" ")[0]
+      const nameForUserName = name.split(" ")[0];
       const generatedUsername = generateFromEmail(
         nameForUserName.toString().toLowerCase(),
         4
       );
-      const userName = "@" + generatedUsername;
+      let userName = "@" + generatedUsername;
 
       //check if the username is token
+      let userByUsername = await UserModel.findOne({ userName }).lean();
+
+      if (userByUsername) {
+        while (!userByUsername) {
+          const generatedUsername = generateFromEmail(
+            nameForUserName.toString().toLowerCase(),
+            4
+          );
+          let newUserName = "@" + generatedUsername;
+
+          //check if the username is token
+          userByUsername = await UserModel.findOne({
+            userName: newUserName,
+          }).lean();
+          userName = newUserName;
+        }
+      }
+
+      //register user
       const newUser = new UserModel({
         fullName: name,
         userName,
