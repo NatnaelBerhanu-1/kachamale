@@ -3,6 +3,7 @@ import connectDB from "@/lib/config";
 import UserModel from "@/model/userRegistrationModel";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { generateFromEmail } from "unique-username-generator";
 interface userInfoType {
   _id: string;
   fullName: string;
@@ -50,11 +51,21 @@ export const signUserWithGoogle = async ({
         phoneNumber: user?.phoneNumber,
       };
       generateJwtAndSaveUserToCookie(userInfo);
-      return { uid: user._id };
+      const id = user._id.toString();
+      return { uid: id };
     }
     if (!user) {
+      const nameForUserName = name.split(" ").join("_");
+      const generatedUsername = generateFromEmail(
+        nameForUserName.toString().toLowerCase(),
+        4
+      );
+      const userName = "@" + generatedUsername;
+
+      //check if the username is token
       const newUser = new UserModel({
         fullName: name,
+        userName,
         email: email,
         isEmailVerified: true,
         profile: profile,

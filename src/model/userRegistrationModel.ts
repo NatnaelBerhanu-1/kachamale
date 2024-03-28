@@ -9,17 +9,27 @@ const userSchema = new mongoose.Schema(
     phoneNumber: {
       type: String,
       unique: true,
-      default: 'NE',
+      default: "NE",
     },
     profile: {
       type: String,
       default:
         "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png",
     },
+    userName: {
+      type: String,
+      unique: true,
+      default: "NE",
+    },
+    role: {
+      type: String,
+      enum: ["SELLER", "ADMIN"],
+      default: "SELLER",
+    },
     email: {
       type: String,
       unique: true,
-      default: 'NE',
+      default: "NE",
     },
     isEmailVerified: {
       type: Boolean,

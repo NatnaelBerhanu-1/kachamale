@@ -1,8 +1,9 @@
 "use server";
 import connectDB from "@/lib/config";
 import UserModel from "@/model/userRegistrationModel";
-// register controller
+import { generateFromEmail } from "unique-username-generator";
 
+// register controller
 export const registerUser = async (currentValue: any, formData: FormData) => {
   const { full_name, phoneNumber, privacy_checkbox } =
     Object.fromEntries(formData);
@@ -18,10 +19,19 @@ export const registerUser = async (currentValue: any, formData: FormData) => {
     if (existUser) {
       return { error: "Phone Number Already Registered." };
     }
+    const name:string = full_name.toString()
+    const nameForUserName = name.split(" ")[1];
+    const generatedUsername = generateFromEmail(
+      nameForUserName.toString().toLowerCase(),
+      4
+    );
+    const userName = "@" + generatedUsername;
 
+    //check if the username is token
     const newUser = new UserModel({
       fullName: full_name,
       phoneNumber,
+      userName
     });
     const savedUser = await newUser.save();
     if (savedUser) {
