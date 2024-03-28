@@ -39,8 +39,6 @@ export const signUserWithGoogle = async ({
   name: string;
   profile: string;
 }) => {
-  console.log(email, name, profile);
-
   try {
     await connectDB();
     const user = (await UserModel.findOne({ email }).lean()) as userInfoType;
@@ -69,7 +67,7 @@ export const signUserWithGoogle = async ({
         phoneNumber: savedUser?.phoneNumber,
       };
       generateJwtAndSaveUserToCookie(userInfo);
-      const id = savedUser._id;
+      const id = savedUser._id.toString();
       return { uid: id };
     }
   } catch (error) {

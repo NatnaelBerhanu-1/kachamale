@@ -10,6 +10,7 @@ import Image from "next/image";
 import { signUserWithGoogle } from "@/actions/googleUser";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Spinner from "./Spinner";
 
 function SignInWithGoogle() {
   const auth = getAuth();
@@ -49,19 +50,22 @@ function SignInWithGoogle() {
       .catch((err) => console.log(err));
   };
   return (
-    <Button
-      className="bg-transparent text-black hover:bg-black/5 border flex gap-1 w-full"
-      onClick={() => signInUser()}
-    >
-      <Image
-        src={"/assets/googleIcon.png"}
-        alt="google icon"
-        width={50}
-        height={50}
-        className="h-4 w-4 object-contain"
-      />
-      <p>Continue in with Google</p>
-    </Button>
+    <>
+      {loading && <Spinner />}
+      <Button
+        className="bg-transparent text-black hover:bg-black/5 border flex gap-1 w-full"
+        onClick={() => signInUser()}
+      >
+        <Image
+          src={"/assets/googleIcon.png"}
+          alt="google icon"
+          width={50}
+          height={50}
+          className="h-4 w-4 object-contain"
+        />
+        <p>Continue in with Google</p>
+      </Button>
+    </>
   );
 }
 
